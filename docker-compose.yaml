@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  web:
+    restart: always
+    command: bundle exec rails s -b 0.0.0.0    
+    image: seanmorris/vid-feed-web    
+    build:
+      dockerfile: ../infra/web.dockerfile
+      context: backend/    
+    volumes:
+      - ./backend:/app    
+    ports:
+      - "3000:3000"    
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_URL: postgres://vidfeed_user@postgres/vidfeed_database
+
+  postgres:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: vidfeed_user
+      POSTGRES_DB: vidfeed_database
+    volumes:
+      - vidfeed-postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    volumes:
+      - vidfeed-redis:/var/lib/redis/data
+
+volumes:
+  vidfeed-postgres:
+  vidfeed-redis:
