@@ -9,8 +9,9 @@ const getCsrf = () => {
   .catch(error => { throw error.response.data })
 };
 
-const apiGet = path => () => {
-  return axios.get(API_HOST + path, {withCredentials: true})
+const apiGet = path => query => {
+	const params = String(new URLSearchParams(query));
+	return axios.get(API_HOST + path + '?' + params, {withCredentials: true})
   .then(response => response.data)
   .catch(error => { throw error.response.data })
 };

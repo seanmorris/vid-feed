@@ -14,7 +14,6 @@ const handleCurrentError = error => {
 };
 
 const handleLogin = result => {
-	console.log(result);
 	document.dispatchEvent(new CustomEvent('user-logged-in', {detail: result}));
 };
 

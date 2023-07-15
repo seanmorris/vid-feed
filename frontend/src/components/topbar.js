@@ -40,7 +40,6 @@ function TopBar() {
 			return;
 		}
 
-		console.log('Close');
 		event.stopImmediatePropagation();
 
 		closeDrawers();
