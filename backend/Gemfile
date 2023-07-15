@@ -75,3 +75,4 @@ gem 'rails-static-router'
 gem "devise", "~> 4.9"
 gem 'rack-cors'
 gem 'kaminari'
+gem "image_processing", ">= 1.2"

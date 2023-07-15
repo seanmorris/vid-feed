@@ -18,14 +18,14 @@ function Register() {
 	const submit = event => {
 		setErrors([]);
 		event.preventDefault();
-		const formData = new FormData(event.target);
+		// const formData = new FormData(event.target);
 
-		const email    = formData.get('email');
-		const password = formData.get('password');
-		const confirm  = formData.get('password_confirmation');
-		const name     = formData.get('name');
+		// const email    = formData.get('email');
+		// const password = formData.get('password');
+		// const confirm  = formData.get('password_confirmation');
+		// const name     = formData.get('name');
 
-		userService.register(email, password, confirm, name)
+		userService.register(new FormData(event.target))
 		.catch(handleError)
 	};
 
@@ -35,19 +35,23 @@ function Register() {
 		</ul>
 		<label>
 			<p>Display Name</p>
-			<input type = "text" name = "name" />
+			<input type = "text" name = "user[name]" />
+		</label>
+		<label>
+			<p>Avatar</p>
+			<input type = "file" name = "user[avatar]" />
 		</label>
 		<label>
 			<p>Email</p>
-			<input type = "text" name = "email" />
+			<input type = "text" name = "user[email]" />
 		</label>
 		<label>
 			<p>Password</p>
-			<input type = "text" name = "password" />
+			<input type = "text" name = "user[password]" />
 		</label>
 		<label>
 			<p>Confirm Password</p>
-			<input type = "text" name = "password_confirmation" />
+			<input type = "text" name = "user[password_confirmation]" />
 		</label>
 		<label>
 			<p></p>

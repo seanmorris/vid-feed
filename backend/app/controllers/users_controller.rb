@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+		# @user.avatar.attach(params[:avatar])
+
     if @user.save
       render :show, status: :created, location: @user
     else
@@ -56,6 +58,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :avatar)
     end
 end

@@ -26,7 +26,7 @@ function Feed() {
 	const loadFeed = (page = 0) => {
 
 		if (page === -1) {
-			getVideos = videoApi.list({page});
+			getVideos = videoApi.list({page:1});
 		}
 
 		if (page <= 1) {
@@ -68,7 +68,7 @@ function Feed() {
 		setPage(currentPage);
 		setRefreshing(true);
 
-		Promise.all([ loadFeed(-1), delay(500 )])
+		Promise.all([ loadFeed(-1), delay(500)])
 		.then(() => {
 			scrollBox.focus();
 			monitor.refreshing = false;
@@ -110,9 +110,11 @@ function Feed() {
 
 			setTimeout(() => {
 				if (observation.isIntersecting) {
+					target.muted = 0;
 					target.play().catch(console.warn);
 				}
 				else {
+					target.muted = 1;
 					target.pause();
 				}
 			}, 200);
@@ -162,20 +164,20 @@ function Feed() {
 			{ videos.map(v => <div className='video' key = {v.id}>
 				<video
 					ref = {  videoRefs.current[ v.id ] }
-					controls = { true } muted = { true } loop = { true }
+					controls = { false } muted = { true } loop = { true }
 					preload = "none"
-					src = { testVideo2 }
+					src = {  v.file || testVideo2 }
 				/>
-				<div className = 'attribution'>
-					<span>
+				<div className = "sub-video">
+					<div className = 'caption'>
+						<span>
+							{ v.description }
+						</span>
+					</div>
+					<div className='attribution'>
 						<span className='icon user-icon'></span>
-						&nbsp;
-						Username here
-						&nbsp;
-						{v.id}
-						&nbsp;
-						{page}
-					</span>
+						{ v.author.name }
+					</div>
 				</div>
 			</div>)}
 			<div className = 'loader bottom-loader' ref = { bottomLoaderRef }></div>

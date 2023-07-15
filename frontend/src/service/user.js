@@ -70,9 +70,9 @@ const userService = {
     return signOut;
   },
 
-  register: function(email, password, password_confirmation, name) {
+  register: function(formData) {
 
-		const register = userApi.signUp({user: {name, email, password, password_confirmation}})
+		const register = userApi.signUp(formData)
 
 		register
 		.then(handleRegistered)

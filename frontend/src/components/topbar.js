@@ -9,7 +9,6 @@ function TopBar() {
 	const [user,   setUser]   = useState(null);
   const [drawer, setDrawer] = useState(null);
 
-	const r = Math.random();
 	let rootBox = null;
 
 	let boxRef = useRef(false);
@@ -36,11 +35,9 @@ function TopBar() {
 
 	document.addEventListener('click', event => {
 
-		if (!rootBox || rootBox && rootBox.contains(event.target)) {
+		if (!rootBox || (rootBox && rootBox.contains(event.target))) {
 			return;
 		}
-
-		event.stopImmediatePropagation();
 
 		closeDrawers();
 

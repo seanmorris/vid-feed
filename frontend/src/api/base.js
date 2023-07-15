@@ -18,8 +18,15 @@ const apiGet = path => query => {
 
 const apiPost = path => packet => {
   return getCsrf().then(authenticity_token => {
-    const fullPacket = {...packet, authenticity_token};
-    return axios.post(API_HOST + path, fullPacket, {withCredentials: true})
+		const formData   = packet instanceof FormData;
+    const fullPacket = formData ? packet : {...packet, authenticity_token};
+
+		if (formData) {
+			packet.set('authenticity_token', authenticity_token);
+			packet.delete('video_file');
+		}
+
+		return axios.post(API_HOST + path, fullPacket, {withCredentials: true})
     .then(response => response.data)
     .catch(error => { throw error.response.data })
   });

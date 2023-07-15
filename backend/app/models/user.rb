@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
 	validates_presence_of :name
 
+	has_one_attached :avatar
+
   def assign_role
     self.role = Role.find_by name: 'Regular' if role.nil?
   end
