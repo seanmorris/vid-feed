@@ -21,19 +21,19 @@ function Login() {
 	};
 
 	return <form onSubmit = { submit }>
+		<h2>Login</h2>
 		<ul className = 'errors'>
 			{errors.map((e,i) => <li key = {i}>{e}</li>)}
 		</ul>
 		<label>
-			<p>Email</p>
+			<span>Email</span>
 			<input type = "text" name = "email" />
 		</label>
 		<label>
-			<p>Password</p>
+			<span>Password</span>
 			<input type = "text" name = "password" />
 		</label>
 		<label>
-			<p></p>
 			<input type = "submit" />
 		</label>
 	</form>;

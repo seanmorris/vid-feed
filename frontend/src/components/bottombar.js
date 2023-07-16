@@ -12,7 +12,7 @@ function BottomBar() {
 	return (
 		<div className = 'bottom-bar' data-drawer = { drawer }>
 			<div className = "bar">
-				<button onClick = { openUpload }>+</button>
+				<button className='bubble' onClick = { openUpload }>+</button>
 			</div>
 
 			<div className='drawer upload-drawer'>

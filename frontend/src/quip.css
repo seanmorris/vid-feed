@@ -1,0 +1,49 @@
+.quip-drawer {
+	text-align: left;
+	position: absolute;
+	bottom: 0;
+	width: 420px;
+	background-color: white;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	transition: transform 0.25s ease-out;
+}
+
+.video:not([data-show-quips="true"]) .quip-drawer {
+	transform: translateY(100%);
+}
+
+.quip-drawer .quip {
+	padding: 0.5rem;
+}
+
+.quip .user-avatar-slot {
+	width: 1.75rem;
+	height: 1.75rem;
+}
+
+.quip .quip-body {
+	margin-left: 2.5rem;
+	border-bottom: 1px #999 solid;
+	padding-bottom: 1rem;
+}
+
+.quip-attribution {
+	display: flex;
+	align-items: center;
+}
+
+.quip-drawer .quip-list {
+	margin-bottom: 1rem;
+}
+
+.quip-drawer .video-caption {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+	font-size: 1.25rem;
+}
+
+.quip-drawer form {
+	margin: 0.5rem;
+}

@@ -1,0 +1,15 @@
+.centered {
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+	 justify-content: center;
+	 height: 100%;
+}
+
+.spacer {
+	flex:1;
+}
+
+.spacer-50 {
+	max-height: 33%;
+}

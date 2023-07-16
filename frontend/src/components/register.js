@@ -30,31 +30,31 @@ function Register() {
 	};
 
 	return <form onSubmit = { submit }>
+		<h2>Sign up</h2>
 		<ul className = 'errors'>
 			{errors.map((e,i) => <li key = {i}>{e}</li>)}
 		</ul>
 		<label>
-			<p>Display Name</p>
+			<span>Display Name</span>
 			<input type = "text" name = "user[name]" />
 		</label>
 		<label>
-			<p>Avatar</p>
+			<span>Avatar</span>
 			<input type = "file" name = "user[avatar]" />
 		</label>
 		<label>
-			<p>Email</p>
+			<span>Email</span>
 			<input type = "text" name = "user[email]" />
 		</label>
 		<label>
-			<p>Password</p>
+			<span>Password</span>
 			<input type = "text" name = "user[password]" />
 		</label>
 		<label>
-			<p>Confirm Password</p>
+			<span>Confirm Password</span>
 			<input type = "text" name = "user[password_confirmation]" />
 		</label>
 		<label>
-			<p></p>
 			<input type = "submit" />
 		</label>
 	</form>;

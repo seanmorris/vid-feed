@@ -1,0 +1,25 @@
+form label {
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem;
+}
+
+form label input[type="submit"],
+form label input[type="button"],
+form label button {
+	align-self: flex-end;
+}
+
+.edit-profile form {
+	margin-top: 1rem;
+}
+
+.edit-profile form,
+.edit-profile form label {
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-profile form label {
+	margin-bottom: 1rem;
+}

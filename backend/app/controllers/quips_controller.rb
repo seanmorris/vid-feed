@@ -7,6 +7,10 @@ class QuipsController < ApplicationController
     @quips = Quip.all
   end
 
+	def byVideo
+		@quips = Quip.where(:video_id => params[:video_id])
+	end
+
   # GET /quips/1
   # GET /quips/1.json
   def show
@@ -16,6 +20,9 @@ class QuipsController < ApplicationController
   # POST /quips.json
   def create
     @quip = Quip.new(quip_params)
+
+    @quip = Quip.new(quip_params)
+    @quip.user_id = current_user.id
 
     if @quip.save
       render :show, status: :created, location: @quip
@@ -48,6 +55,6 @@ class QuipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quip_params
-      params.require(:quip).permit(:body, :user_id)
+      params.require(:quip).permit(:body, :video_id)
     end
 end

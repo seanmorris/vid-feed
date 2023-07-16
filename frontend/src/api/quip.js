@@ -1,3 +1,7 @@
-import { apiGen } from './base';
+import { apiGen, apiGet } from './base';
 
-export default apiGen('/quips');
+const quipApi = apiGen('/quips');;
+
+quipApi.byVideo = apiGet('/quips/by-video.json');
+
+export default quipApi;

@@ -72,8 +72,8 @@ function TopBar() {
 									{ user.name }
 								</span>
 							: <span>
-									<a onClick = {openSignup}>Sign up</a>
 									<a onClick = {openLogin}>Log in</a>
+									<a className='cta' onClick = {openSignup}>Sign up</a>
 								</span>
 					}
 				</div>
