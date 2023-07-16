@@ -5,9 +5,15 @@ import Register from './register';
 
 import userService from '../service/user';
 
+import '../hamburger.css';
+
+let menuOpen = false;
+
 function TopBar() {
-	const [user,   setUser]   = useState(null);
+
   const [drawer, setDrawer] = useState(null);
+  const [menu,   setMenu]   = useState(menuOpen);
+	const [user,   setUser]   = useState(null);
 
 	let rootBox = null;
 
@@ -43,11 +49,20 @@ function TopBar() {
 
 	}, {capture: true});
 
+	const toggleMenu = () => {
+		menuOpen = !menuOpen;
+		setMenu(menuOpen);
+	};
+
 	return (
 		<header ref = { boxRef } className="top-bar" data-drawer = {drawer}>
+
 			<div className = "bar">
 				<div className = "logo">
-				<Link to='/'>LOGO</Link>
+					<Link to='/'>
+						<span class = "logo-glyph"></span>
+						<span class = "logo-text">VidFeed</span>
+					</Link>
 				</div>
 				<div className = "spacer"></div>
 				<div className = "links">
@@ -62,9 +77,16 @@ function TopBar() {
 								</span>
 					}
 				</div>
+				<div className = "hamburger-button" data-open = { menu } onClick = {toggleMenu} >
+					<div className = "burger-bar"></div>
+					<div className = "burger-bar"></div>
+					<div className = "burger-bar"></div>
+				</div>
 			</div>
+
 			<div className = "drawer login"><Login /></div>
 			<div className = "drawer register"><Register /></div>
+
 			<div className = "drawer menu">
 				<ul>
 					<li onClick = { logout } >Logout</li>

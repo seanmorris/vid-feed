@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, BrowserRouter, Route, Routes, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './index.css';
-import App from './App';
-
-import { Link } from 'react-router-dom';
+import './App.css';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,6 +11,10 @@ import TopBar from './components/topbar';
 import Feed from './components/feed';
 import Profile from './components/profile';
 import EditProfile from './components/edit-profile';
+
+import userService from './service/user';
+
+userService.current();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

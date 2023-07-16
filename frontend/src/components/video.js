@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, createRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import testVideo1 from '../testVideo1.mp4';
+// import testVideo1 from '../testVideo1.mp4';
 import testVideo2 from '../testVideo2.mp4';
 
 function Video({video, parent}) {
@@ -19,7 +19,7 @@ function Video({video, parent}) {
 						target.muted = 0;
 						target.play().catch(console.warn);
 					}
-					else {
+					else if(!document.fullscreenElement) {
 						target.muted = 1;
 						target.pause();
 					}

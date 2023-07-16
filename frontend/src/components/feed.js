@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, createRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Video from './video';
 
 import videoApi   from '../api/video';
-import testVideo1 from '../testVideo1.mp4';
-import testVideo2 from '../testVideo2.mp4';
 
 const delay = d => new Promise(a => setTimeout(a, d));
 
@@ -21,7 +19,7 @@ function Feed() {
 
 	const [refreshing, setRefreshing] = useState(false);
 	const [videos, setVideos] = useState(videoList);
-	const [page, setPage] = useState(currentPage);
+	const [, setPage] = useState(currentPage);
 
 	const loadFeed = (page = 0) => {
 		if (page <= 1) {
