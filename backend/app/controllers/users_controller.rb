@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
+	private
+
+	def needs_password?(_user, params)
+		params[:current_password].present?
+	end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

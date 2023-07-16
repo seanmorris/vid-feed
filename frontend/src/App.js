@@ -12,13 +12,7 @@ import Feed from './components/feed';
 userService.current();
 
 function App() {
-	return (
-    <div className="App">
-			<TopBar />
-			<div className = 'frame'><Feed /></div>
-			<BottomBar />
-    </div>
-  );
+	return ( <div className="App"><Feed /></div> );
 }
 
 export default App;

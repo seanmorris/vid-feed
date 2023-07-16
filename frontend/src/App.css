@@ -1,8 +1,8 @@
-html, body, body > #root, .App {
+html, body, body > #root, .App, .frame {
 	height: 100%;
 }
 
-.App {
+#root {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -79,7 +79,7 @@ span.icon {
 	flex: 1;
 }
 
-.frame .videos {
+.videos {
 	position: absolute;
 	bottom:   0;
 	top:      0;
@@ -91,17 +91,6 @@ span.icon {
 	overflow-y: scroll;
 	overflow-y: overlay;
 	scroll-snap-type: y mandatory;
-}
-
-*::-webkit-scrollbar {
-	/* display: inline; */
-	/* position: absolute;
-	left:0;
-	top: 0;
-	bottom: 0;
-	right: 0; */
-	/* width: 0 !important; */
-	/* scrollbar-width: thin; */
 }
 
 .frame .videos .video {
@@ -119,12 +108,21 @@ span.icon {
 }
 
 .frame .videos .loader {
+	background-image: url(spin.svg);
+	background-position: center;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	opacity: 0.75;
+	filter: invert(1);
 	min-height: 50%;
 }
 
 .frame .videos[data-refreshing="false"] .bottom-loader {
 	scroll-snap-align: start;
-	/* display: none; */
+}
+
+.top-loader + .bottom-loader {
+	display: none;
 }
 
 .frame .videos .video video {
@@ -227,4 +225,45 @@ button.close {
 	position: absolute;
 	top:   0.5rem;
 	right: 0.5rem;
+}
+
+.fill {
+	position: relative;
+	flex: 1;
+}
+
+.edit-profile,
+.profile {
+	margin: auto;
+	width: 450px;
+}
+
+.edit-profile form {
+	margin-top: 1rem;
+}
+
+.edit-profile form,
+.edit-profile form label {
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-profile form label {
+	margin-bottom: 1rem;
+}
+
+.profile h1 {
+	display: flex;
+	align-items: center;
+}
+
+.avatar {
+	width: 2em;
+	height:2em;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.profile h1 .avatar {
+	margin-right: 1rem;
 }

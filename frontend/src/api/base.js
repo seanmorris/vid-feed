@@ -34,7 +34,14 @@ const apiPost = path => packet => {
 
 const apiPatch = path => packet => {
   return getCsrf().then(authenticity_token => {
-    const fullPacket = {...packet, authenticity_token};
+    const formData   = packet instanceof FormData;
+    const fullPacket = formData ? packet : {...packet, authenticity_token};
+
+		if (formData) {
+			packet.set('authenticity_token', authenticity_token);
+			packet.delete('video_file');
+		}
+
     return axios.patch(API_HOST + path, fullPacket, {withCredentials: true})
     .then(response => response.data)
     .catch(error => { throw error.response.data })

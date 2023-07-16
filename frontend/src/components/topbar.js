@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-
+import { Link } from 'react-router-dom'
 import Login from './login';
 import Register from './register';
 
@@ -46,7 +46,9 @@ function TopBar() {
 	return (
 		<header ref = { boxRef } className="top-bar" data-drawer = {drawer}>
 			<div className = "bar">
-				<div className = "logo">LOGO HERE</div>
+				<div className = "logo">
+				<Link to='/'>LOGO</Link>
+				</div>
 				<div className = "spacer"></div>
 				<div className = "links">
 					{ user
@@ -65,8 +67,10 @@ function TopBar() {
 			<div className = "drawer register"><Register /></div>
 			<div className = "drawer menu">
 				<ul>
-					<li>Home</li>
 					<li onClick = { logout } >Logout</li>
+					<li><Link to='/'>Home</Link></li>
+					<li><Link to='/me'>My Profile</Link></li>
+					<li><Link to='/edit-profile'>Edit Profile</Link></li>
 				</ul>
 			</div>
 		</header>
