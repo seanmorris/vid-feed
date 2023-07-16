@@ -1,5 +1,5 @@
 * {
-	--lightShade: #CCC;
+	--lightShade: #000;
 }
 
 html, body, body > #root, .App, .frame {
@@ -23,6 +23,7 @@ header.top-bar {
 
 header.top-bar .logo {
 	padding: 1rem;
+	filter: invert(1);
 }
 
 header.top-bar .bar .spacer {
@@ -101,8 +102,8 @@ button.close {
 	background-image: url("x.svg");
 	background-size: contain;
 	position: absolute;
-	top:   0.5rem;
-	right: 0.5rem;
+	top:   1.25rem;
+	right: 1.25rem;
 }
 
 .fill {

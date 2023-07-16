@@ -4,7 +4,17 @@ import userApi from '../api/user';
 
 function EditProfile() {
 
-	const [user, setUser] = useState();
+	const [errors, setErrors] = useState([]);
+	const [user, setUser]     = useState();
+
+	const handleError = response => {
+		const errors = [];
+		for (const [field, error] of Object.entries(response.errors)) {
+			const _field = field[0].toUpperCase() + field.slice(1);
+			errors.push(`${_field} ${error}.`);
+		}
+		setErrors(errors);
+	};
 
 	if (!user) {
 		userService.current().then(u => u && setUser(u));
@@ -15,11 +25,14 @@ function EditProfile() {
 
 		const formData = new FormData(event.target);
 
-		userApi.update(formData);
+		userApi.update(formData).catch(handleError);
 	}
 
 	return (<div className = "edit-profile">
 		<h1>Edit Profile</h1>
+		<ul className = 'errors'>
+			{errors.map((e,i) => <li key = {i}>{e}</li>)}
+		</ul>
 		{ user
 			? <form onSubmit = { handleSubmit } >
 				<label>

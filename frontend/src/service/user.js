@@ -3,9 +3,11 @@ import userApi from '../api/user';
 let currentUser = null;
 
 const handleCurrent = result => {
+	userService.signedIn = false;
 	if (!currentUser && result && result.id) {
 		handleLogin(result);
 		currentUser = result;
+		userService.signedIn = true;
 	}
 };
 
@@ -14,6 +16,7 @@ const handleCurrentError = error => {
 };
 
 const handleLogin = result => {
+	userService.signedIn = true;
 	document.dispatchEvent(new CustomEvent('user-logged-in', {detail: result}));
 };
 
@@ -22,6 +25,7 @@ const handleLoginError = error => {
 };
 
 const handleLogout = result => {
+	userService.signedIn = false;
 	document.dispatchEvent(new CustomEvent('user-logged-out', {detail: result}))
 };
 
@@ -39,6 +43,8 @@ const handleRegisterError = error => {
 }
 
 const userService = {
+
+	signedIn: false,
 
 	current: function() {
     const current = userApi.current()

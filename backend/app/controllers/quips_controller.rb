@@ -19,6 +19,11 @@ class QuipsController < ApplicationController
   # POST /quips
   # POST /quips.json
   def create
+		if ! current_user
+      render json: { status: :unprocessable_entity }
+      return
+    end
+
     @quip = Quip.new(quip_params)
 
     @quip = Quip.new(quip_params)

@@ -2,11 +2,19 @@
 	text-align: left;
 	position: absolute;
 	bottom: 0;
-	width: 420px;
+	width: 418px;
 	background-color: white;
 	border: 1px solid #999;
 	box-sizing: border-box;
 	transition: transform 0.25s ease-out;
+
+	max-height: 75%;
+	display: flex;
+	flex-direction: column;
+}
+
+.quip-drawer .quip-list {
+	overflow: auto;
 }
 
 .video:not([data-show-quips="true"]) .quip-drawer {
@@ -24,17 +32,16 @@
 
 .quip .quip-body {
 	margin-left: 2.5rem;
-	border-bottom: 1px #999 solid;
 	padding-bottom: 1rem;
+}
+
+.quip:not(:last-child) .quip-body {
+	border-bottom: 1px #999 solid;
 }
 
 .quip-attribution {
 	display: flex;
 	align-items: center;
-}
-
-.quip-drawer .quip-list {
-	margin-bottom: 1rem;
 }
 
 .quip-drawer .video-caption {

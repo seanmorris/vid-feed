@@ -18,14 +18,8 @@ function Register() {
 	const submit = event => {
 		setErrors([]);
 		event.preventDefault();
-		// const formData = new FormData(event.target);
-
-		// const email    = formData.get('email');
-		// const password = formData.get('password');
-		// const confirm  = formData.get('password_confirmation');
-		// const name     = formData.get('name');
-
 		userService.register(new FormData(event.target))
+		.then(() => event.target.reset())
 		.catch(handleError)
 	};
 

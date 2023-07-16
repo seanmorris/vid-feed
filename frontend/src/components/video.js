@@ -81,7 +81,7 @@ function Video({video, parent}) {
 				<Quips video = { video } />
 				<NewQuip video = { video } />
 			</div>
-			<div class = "end-brow"><button className='subtle small' onClick = { () => setShowQuips(true) } >view/add comments</button></div>
+			<div className = "end-brow"><button className='subtle small' onClick = { () => setShowQuips(true) } >view/add comments</button></div>
 		</div>
 
 	</div>);

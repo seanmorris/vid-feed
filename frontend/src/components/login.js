@@ -17,6 +17,7 @@ function Login() {
 		const password = formData.get('password');
 
 		userService.signIn(email, password)
+		.then(() => event.target.reset())
 		.catch(handleError)
 	};
 

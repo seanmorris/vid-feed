@@ -4,19 +4,25 @@ import videoApi from '../api/video';
 
 function Upload() {
 
-	const [errors, setErrors]   = useState([]);
+	const [errors, setErrors] = useState([]);
 
-	// const handleError = response => setErrors([response.error]);
+	const handleError = response => {
+		const errors = [];
+		for (const [field, error] of Object.entries(response.errors)) {
+			const _field = field[0].toUpperCase() + field.slice(1);
+			errors.push(`${_field} ${error}.`);
+		}
+		setErrors(errors);
+	};
 
 	const submit = event => {
 		setErrors([]);
 		event.preventDefault();
 		const formData = new FormData(event.target);
 
-		videoApi.create(formData);
-
+		videoApi.create(formData)
+		.then(() => event.target.reset());
 	};
-
 	return <form onSubmit = { submit }>
 		<h2>Upload</h2>
 		<ul className = 'errors'>
@@ -25,7 +31,6 @@ function Upload() {
 		<label>
 			<span>File</span>
 			<input type = "file" name = "video[file]" />
-			{/* <input type = "hidden" name = "video[resource]" value = "fake url here" /> */}
 		</label>
 		<label>
 			<span>Caption</span>

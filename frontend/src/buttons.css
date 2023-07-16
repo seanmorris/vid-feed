@@ -31,7 +31,7 @@ input[type="submit"].cta,
 input[type="button"].cta,
 a.button.cta,
 header.top-bar .links a.cta {
-	background-color: rgba(224,80,0,1);
+	background-color: rgba(212,64,32,1);
 }
 
 button:active:not(.close):(.subtle),

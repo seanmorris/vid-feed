@@ -3,8 +3,8 @@ export default function Quip({quip}) {
 		<div className = "quip">
 			<div className = "quip-attribution">
 			<span className='user-avatar-slot'>
-					{quip.avatar_url
-						? <img src = { quip.avatar_url } />
+					{quip.author_avatar
+						? <img src = { quip.author_avatar } />
 						: ''
 					}
 				</span>

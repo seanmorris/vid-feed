@@ -17,19 +17,16 @@ function TopBar() {
 
 	let rootBox = null;
 
-	let boxRef = useRef(false);
-
-	useEffect(() => { rootBox = rootBox || boxRef.current }, [boxRef]);
-
 	const closeDrawers = event => setDrawer(null);
 	const openSignup   = event => setDrawer('sign-up');
 	const openLogin    = event => setDrawer('log-in');
 	const openMenu     = event => setDrawer('menu');
 
-  document.addEventListener('user-logged-in', event => {
+	const userLoggedIn = event => {
 		setUser(event.detail);
 		closeDrawers();
-	});
+	};
+
 
 	const logout = () => {
 		userService.signOut();
@@ -37,17 +34,46 @@ function TopBar() {
 		setUser(null);
 	}
 
-	document.addEventListener('user-logged-out', event => setUser(false));
+	const userLoggedOut = event => setUser(false);
 
-	document.addEventListener('click', event => {
+	const userClickedOutside = event => {
 
 		if (!rootBox || (rootBox && rootBox.contains(event.target))) {
 			return;
 		}
 
 		closeDrawers();
+	};
 
-	}, {capture: true});
+	const userAttemptedAction = event => {
+		if (!userService.signedIn) {
+			event.preventDefault();
+			openLogin();
+		}
+	};
+
+	const clickedOpts = {capture: true};
+
+	let boxRef = useRef(false);
+
+	useEffect(() => {
+		rootBox = rootBox || boxRef.current
+
+		document.addEventListener('user-logged-in', userLoggedIn);
+		document.addEventListener('user-logged-out', userLoggedOut);
+		document.addEventListener('click', userClickedOutside, clickedOpts);
+		document.addEventListener('uploadClicked', userAttemptedAction);
+		document.addEventListener('submitCommentClicked', userAttemptedAction);
+
+		return () => {
+			document.removeEventListener('user-logged-in', userLoggedIn);
+			document.removeEventListener('user-logged-out', userLoggedOut);
+			document.removeEventListener('click', userClickedOutside, clickedOpts);
+			document.removeEventListener('uploadClicked', userAttemptedAction);
+			document.removeEventListener('submitCommentClicked', userAttemptedAction);
+		}
+
+	}, [boxRef]);
 
 	const toggleMenu = () => {
 		menuOpen = !menuOpen;
@@ -60,8 +86,8 @@ function TopBar() {
 			<div className = "bar">
 				<div className = "logo">
 					<Link to='/'>
-						<span class = "logo-glyph"></span>
-						<span class = "logo-text">VidFeed</span>
+						<span className = "logo-glyph"></span>
+						<span className = "logo-text">VidFeed</span>
 					</Link>
 				</div>
 				<div className = "spacer"></div>

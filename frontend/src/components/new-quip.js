@@ -4,13 +4,29 @@ import quipApi from "../api/quip";
 export default function NewQuip({video}) {
 	const [errors, setErrors]   = useState([]);
 
-	const handleError = response => setErrors([response.error]);
+	const handleError = errors => {
+		const _errors = [];
+		for (const [field, error] of Object.entries(errors)) {
+			const _field = field[0].toUpperCase() + field.slice(1);
+			_errors.push(`${_field} ${error}.`);
+		}
+		setErrors(_errors);
+	};
 
 	const submit = event => {
-		setErrors([]);
 		event.preventDefault();
+
+		if (!document.dispatchEvent(new CustomEvent('submitCommentClicked', {cancelable:true}))) {
+			return;
+		}
+
+		setErrors([]);
 		quipApi.create(new FormData(event.target))
-		.catch(handleError)
+		.then(quip => {
+			document.dispatchEvent(new CustomEvent('newQuip', {detail:{quip,video}}));
+			event.target.reset();
+		})
+		.catch(handleError);
 	};
 
 	return (
