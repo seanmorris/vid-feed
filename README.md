@@ -17,8 +17,9 @@ You only need Docker & Docker Compose installed to get started developing VidFee
 Just checkout the project, switch to the new directory and start the cluster. Rails takes up the root of the project, and the React frontend can be found in the `frontend/` directory.
 
 ```bash
-$ git clone ...
+$ git clone git@github.com:seanmorris/vid-feed.git
 $ cd vid-feed
+$ docker login
 $ docker-compose up
 ```
 ### Important information regarding ports 3000 & 3001:
