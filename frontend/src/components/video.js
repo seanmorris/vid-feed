@@ -118,18 +118,19 @@ function Video({video, parent}) {
         <span className='caption-view'>
           { video.description }
         </span>
-        <form onSubmit = { editCaptionSubmit } className='caption-edit'>
-          <label>
-            <textarea name = "video[description]" rows = "4" defaultValue={video.description}></textarea>
-          </label>
-          <label className = "row end">
-            <button className = "uncta" onClick = { () => setEditing(false) }>cancel</button>
-            &nbsp;
-            <input type = "hidden" name = "video[id]" value = { video.id } />
-            <input type = "submit" />
-          </label>
-        </form>
-      </div> }
+      </div>}
+
+      <form onSubmit = { editCaptionSubmit } className='caption-edit'>
+        <label>
+          <textarea name = "video[description]" rows = "4" defaultValue={video.description}></textarea>
+        </label>
+        <label className = "row end">
+          <button className = "uncta" onClick = { () => setEditing(false) }>cancel</button>
+          &nbsp;
+          <input type = "hidden" name = "video[id]" value = { video.id } />
+          <input type = "submit" />
+        </label>
+      </form>
 
       <div className = "end-brow">
         {canEdit
