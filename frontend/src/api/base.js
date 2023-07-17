@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_HOST = '//localhost:3000'
+const API_HOST = window.location.hostname !== 'localhost'
+	? window.location.origin
+	: '//localhost:3000';
 
 const getCsrf = () => {
   const API_PATH  = '/csrf';
