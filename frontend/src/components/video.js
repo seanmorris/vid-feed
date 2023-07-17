@@ -19,9 +19,11 @@ function Video({video, parent}) {
 
   const navigate = useNavigate();
   const videoRef = useRef(null);
+  const boxRef   = useRef(null);
 
   useEffect(() => {
     if (parent) {
+      video.node = boxRef.current;
       const ref = videoRef.current;
       const observerOpts  = {root: parent.current, threshold: 1};
       const videoObserver = new IntersectionObserver(observations => {
@@ -86,7 +88,7 @@ function Video({video, parent}) {
     navigate(event.target.getAttribute('href'));
   };
 
-  return (<div className='video' data-show-quips = {showQuips}>
+  return (<div className='video' data-show-quips = {showQuips} ref = { boxRef }>
     <div className = "super-video">
       <a className='attribution' onClick={ navigateToProfile } href = {'/user/' + video.author.id}>
         <span className='user-avatar-slot'>
@@ -112,7 +114,7 @@ function Video({video, parent}) {
 
     <div className = "sub-video" data-editing = { editing }>
 
-      <div className = 'caption'>
+      {video.description && <div className = 'caption'>
         <span className='caption-view'>
           { video.description }
         </span>
@@ -127,7 +129,7 @@ function Video({video, parent}) {
             <input type = "submit" />
           </label>
         </form>
-      </div>
+      </div> }
 
       <div className = "end-brow">
         {canEdit

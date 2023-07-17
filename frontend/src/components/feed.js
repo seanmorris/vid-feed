@@ -9,6 +9,7 @@ const delay = d => new Promise(a => setTimeout(a, d));
 let
   currentPage = 0,
   videoList = [],
+  newVideos = [],
   getVideos,
   scrollBox,
   topLoader,
@@ -50,7 +51,8 @@ function Feed() {
           doneRef.current = true;
         }
         videoList = [...videoList, ...v]
-        setVideos(videoList)
+        newVideos = v;
+        setVideos(videoList);
       });
     }
 
@@ -58,7 +60,7 @@ function Feed() {
   };
 
   if (!videoList.length) {
-    loadFeed(0);
+    // loadFeed(0)
   }
 
   useEffect(() => {
@@ -83,10 +85,23 @@ function Feed() {
       setRefreshing(true);
 
       delay(500).then(() => Promise.all([ loadFeed(-1), delay(500)]))
+      .then(delay(500))
       .then(() => {
         scrollBox.focus();
-        monitor.refreshing = false;
-        setRefreshing(false);
+
+        const tops = videoList.map(v => v.node && v.node.offsetTop);
+
+        if (tops.length ) {
+          const top = tops[0];
+          console.log(top)
+          scrollBox.scrollTo({top, behavior: 'smooth'})
+        }
+
+        delay(500).then(() => {
+          monitor.refreshing = false;
+          setRefreshing(false);
+        })
+
       });
     }, observerOpts);
 
@@ -113,8 +128,19 @@ function Feed() {
       delay(500).then(() => Promise.all([ loadFeed(currentPage), delay(500)]))
       .then(() => {
         scrollBox.focus();
-        monitor.refreshing = false;
-        setRefreshing(false);
+
+        const tops = newVideos.map(v => v.node && v.node.offsetTop);
+
+        if (tops.length ) {
+          const top = tops[0];
+          console.log(top)
+          scrollBox.scrollTo({top, behavior: 'smooth'})
+        }
+
+        delay(500).then(() => {
+          monitor.refreshing = false;
+          setRefreshing(false);
+        })
       });
     }, observerOpts);
 
@@ -139,7 +165,7 @@ function Feed() {
   return (
     <div ref = { scrollBoxRef } className = 'videos' data-refreshing = { refreshing } data-done = { doneRef.current }>
       <div tabIndex = "0" className = 'loader top-loader' ref = { topLoaderRef }></div>
-      { videos.map(v => <Video video = {v} parent = { scrollBoxRef } key = {v.id} /> ) }
+      {videos.map(v => <Video video = {v} parent = { scrollBoxRef } key = {v.id} /> )}
       <div className = 'loader bottom-loader' ref = { bottomLoaderRef }></div>
     </div>
   );

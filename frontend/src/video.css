@@ -118,6 +118,12 @@
 
 .video .end-brow {
   text-align: right;
+  margin-top: 0.65rem;
+}
+
+.video .end-brow,
+.video .end-brow button {
+  font-size: 1rem;
 }
 
 .video-list {

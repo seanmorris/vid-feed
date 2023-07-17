@@ -101,7 +101,7 @@ function TopBar() {
   };
 
   return (
-    <header ref = { boxRef } className="top-bar" data-drawer = {drawer}>
+    <header ref = { boxRef } className="top-bar" data-drawer = {drawer} data-menu-open = { menu }>
 
       <div className = "bar">
         <div className = "logo">
