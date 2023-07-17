@@ -23,6 +23,20 @@ $ cd vid-feed
 $ docker login
 $ docker-compose up
 ```
+
+Once its set up you can then start the project with just:
+
+```bash
+$ docker-compose up
+$ docker-compose up -d # Optionally, run in the background
+```
+
+You can also stop it from another terminal with:
+
+```bash
+$ docker-compose down
+```
+
 ### Important information regarding ports 3000 & 3001:
 
 Both the frontend and the backend can be served through one server. This is achieved by inspecting the `accept` header of the HTTP request during Rails' routing phase.
