@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const API_HOST = window.location.hostname !== 'localhost'
-	? window.location.origin
-	: '//localhost:3000';
+  ? window.location.origin
+  : '//localhost:3000';
 
 const getCsrf = () => {
   const API_PATH  = '/csrf';
@@ -12,23 +12,23 @@ const getCsrf = () => {
 };
 
 const apiGet = path => query => {
-	const params = String(new URLSearchParams(query));
-	return axios.get(API_HOST + path + '?' + params, {withCredentials: true})
+  const params = String(new URLSearchParams(query));
+  return axios.get(API_HOST + path + '?' + params, {withCredentials: true})
   .then(response => response && response.data)
   .catch(error => { console.error(error); throw error.response.data })
 };
 
 const apiPost = path => packet => {
   return getCsrf().then(authenticity_token => {
-		const formData   = packet instanceof FormData;
+    const formData   = packet instanceof FormData;
     const fullPacket = formData ? packet : {...packet, authenticity_token};
 
-		if (formData) {
-			packet.set('authenticity_token', authenticity_token);
-			packet.delete('video_file');
-		}
+    if (formData) {
+      packet.set('authenticity_token', authenticity_token);
+      packet.delete('video_file');
+    }
 
-		return axios.post(API_HOST + path, fullPacket, {withCredentials: true})
+    return axios.post(API_HOST + path, fullPacket, {withCredentials: true})
     .then(response => response.data)
     .catch(error => { throw error.response.data })
   });
@@ -39,10 +39,10 @@ const apiPatch = path => packet => {
     const formData   = packet instanceof FormData;
     const fullPacket = formData ? packet : {...packet, authenticity_token};
 
-		if (formData) {
-			packet.set('authenticity_token', authenticity_token);
-			packet.delete('video_file');
-		}
+    if (formData) {
+      packet.set('authenticity_token', authenticity_token);
+      packet.delete('video_file');
+    }
 
     return axios.patch(API_HOST + path, fullPacket, {withCredentials: true})
     .then(response => response.data)
