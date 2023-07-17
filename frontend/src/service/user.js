@@ -3,11 +3,10 @@ import userApi from '../api/user';
 let currentUser = null;
 
 const handleCurrent = result => {
-	userService.signedIn = false;
 	if (!currentUser && result && result.id) {
 		handleLogin(result);
 		currentUser = result;
-		userService.signedIn = true;
+		userService.signedIn = currentUser;
 	}
 };
 

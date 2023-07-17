@@ -31,6 +31,7 @@
 }
 
 .quip .quip-body {
+	margin: 0;
 	margin-left: 2.5rem;
 	padding-bottom: 1rem;
 }

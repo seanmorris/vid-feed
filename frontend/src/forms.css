@@ -4,6 +4,22 @@ form label {
 	padding: 0.5rem;
 }
 
+form label span {
+	font-size: 0.9rem;
+}
+
+textarea,
+form label input:not([type]),
+form label input[type="text"],
+form label input[type="password"] {
+	border-radius: 6px;
+	border: 1px solid #999;
+	padding: 0.65rem 0.75rem;
+	font-size: 0.95rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
 form label input[type="submit"],
 form label input[type="button"],
 form label button {
@@ -22,4 +38,9 @@ form label button {
 
 .edit-profile form label {
 	margin-bottom: 1rem;
+}
+
+textarea {
+	resize: none;
+	max-height: 320px;
 }

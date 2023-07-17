@@ -31,14 +31,14 @@ export default function NewQuip({video}) {
 
 	return (
 		<form onSubmit = { submit }>
-			<ul className = 'errors'>
-				{errors.map((e,i) => <li key = {i}>{e}</li>)}
-			</ul>
 			<label>
 				comment:
 				<textarea name = "quip[body]" rows = "4"></textarea>
 				<input name = "quip[video_id]" type = "hidden" value = {video.id}></input>
 			</label>
+			<ul className = 'errors'>
+				{errors.map((e,i) => <li key = {i}>{e}</li>)}
+			</ul>
 			<label>
 				<input type = "submit" />
 			</label>

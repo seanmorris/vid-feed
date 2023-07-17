@@ -14,6 +14,8 @@ let
 	topLoader,
 	bottomLoader;
 
+let done = false;
+
 function Feed() {
 	const monitor = {refreshing: false};
 
@@ -21,17 +23,32 @@ function Feed() {
 	const [videos, setVideos] = useState(videoList);
 	const [, setPage] = useState(currentPage);
 
+	const scrollBoxRef    = useRef(false);
+	const topLoaderRef    = useRef(false);
+	const bottomLoaderRef = useRef(false);
+	const videoRefs       = useRef({});
+	const doneRef         = useRef(false)
+
 	const loadFeed = (page = 0) => {
+		if (doneRef.current) {
+			return;
+		}
 		if (page <= 1) {
 			getVideos = videoApi.list({page:1});
 			getVideos.then(v => {
 				videoList = v;
+				if (!v.length) {
+					doneRef.current = true;
+				}
 				setVideos(videoList);
 			});
 		}
 		else {
 			getVideos = videoApi.list({page});
 			getVideos.then(v => {
+				if (!v.length) {
+					doneRef.current = true;
+				}
 				videoList = [...videoList, ...v]
 				setVideos(videoList)
 			});
@@ -44,11 +61,6 @@ function Feed() {
 		loadFeed(0);
 	}
 
-	const scrollBoxRef    = useRef(false);
-	const topLoaderRef    = useRef(false);
-	const bottomLoaderRef = useRef(false);
-	const videoRefs       = useRef({});
-
 	useEffect(() => {
 
 		if (scrollBox !== scrollBoxRef.current) {
@@ -58,12 +70,13 @@ function Feed() {
 		const observerOpts = {root: scrollBox, threshold: 1};
 
 		const topObserver = new IntersectionObserver(observation => {
-			if (monitor.refreshing) {
+			if ((doneRef.current && !videoList.length) || monitor.refreshing) {
 				return;
 			}
 
 			currentPage = 1;
 			monitor.refreshing = true;
+			doneRef.current = false;
 
 			setVideos([]);
 			setPage(currentPage);
@@ -78,6 +91,10 @@ function Feed() {
 		}, observerOpts);
 
 		const bottomObserver = new IntersectionObserver(() => {
+
+			if (doneRef.current) {
+				return;
+			}
 
 			if (!videoList.length) {
 				return;
@@ -120,7 +137,7 @@ function Feed() {
 	}, [scrollBoxRef, topLoaderRef, bottomLoaderRef, videoRefs]);
 
 	return (
-		<div ref = { scrollBoxRef } className = 'videos' data-refreshing = { refreshing }>
+		<div ref = { scrollBoxRef } className = 'videos' data-refreshing = { refreshing } data-done = { doneRef.current }>
 			<div tabIndex = "0" className = 'loader top-loader' ref = { topLoaderRef }></div>
 			{ videos.map(v => <Video video = {v} parent = { scrollBoxRef } key = {v.id} /> ) }
 			<div className = 'loader bottom-loader' ref = { bottomLoaderRef }></div>

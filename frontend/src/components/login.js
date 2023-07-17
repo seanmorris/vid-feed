@@ -16,8 +16,19 @@ function Login() {
 		const email    = formData.get('email');
 		const password = formData.get('password');
 
+		if (!email || !password) {
+			const localError = [];
+			email || localError.push('Email cannot be blank.');
+			password || localError.push('Password cannot be blank.');
+			setErrors(localError);
+			return;
+		}
+
 		userService.signIn(email, password)
-		.then(() => event.target.reset())
+		.then(() => {
+			setErrors([]);
+			event.target.reset()
+		})
 		.catch(handleError)
 	};
 
@@ -32,7 +43,7 @@ function Login() {
 		</label>
 		<label>
 			<span>Password</span>
-			<input type = "text" name = "password" />
+			<input type = "password" name = "password" />
 		</label>
 		<label>
 			<input type = "submit" />

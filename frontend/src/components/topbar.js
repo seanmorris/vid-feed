@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Login from './login';
 import Register from './register';
 
 import userService from '../service/user';
 
 import '../hamburger.css';
+
 
 let menuOpen = false;
 
@@ -14,25 +15,28 @@ function TopBar() {
   const [drawer, setDrawer] = useState(null);
   const [menu,   setMenu]   = useState(menuOpen);
 	const [user,   setUser]   = useState(null);
+	const navigate = useNavigate();
 
 	let rootBox = null;
 
-	const closeDrawers = event => setDrawer(null);
-	const openSignup   = event => setDrawer('sign-up');
-	const openLogin    = event => setDrawer('log-in');
-	const openMenu     = event => setDrawer('menu');
+	const closeDrawers = event => { setDrawer(null) };
+	const openSignup   = event => { setMenu(menuOpen = false); setDrawer('sign-up') };
+	const openLogin    = event => { setMenu(menuOpen = false); setDrawer('log-in') };
+	const openMenu     = event => { setDrawer('menu') };
 
 	const userLoggedIn = event => {
-		setUser(event.detail);
+		userService.current().then(u => setUser(u));
 		closeDrawers();
 	};
 
-
 	const logout = () => {
-		userService.signOut();
-		closeDrawers();
-		setUser(null);
-	}
+		userService.signOut().then(() => {
+			navigate('/');
+			closeDrawers();
+			setUser(null);
+			window.location.reload();
+		});
+	};
 
 	const userLoggedOut = event => setUser(false);
 
@@ -41,8 +45,9 @@ function TopBar() {
 		if (!rootBox || (rootBox && rootBox.contains(event.target))) {
 			return;
 		}
-
 		closeDrawers();
+		setMenu(false);
+		menuOpen = false;
 	};
 
 	const userAttemptedAction = event => {
@@ -56,6 +61,9 @@ function TopBar() {
 
 	let boxRef = useRef(false);
 
+	const updateUser = event => setUser(event.detail);
+	const closeMenu = () => setMenu(menuOpen = false);
+
 	useEffect(() => {
 		rootBox = rootBox || boxRef.current
 
@@ -64,6 +72,8 @@ function TopBar() {
 		document.addEventListener('click', userClickedOutside, clickedOpts);
 		document.addEventListener('uploadClicked', userAttemptedAction);
 		document.addEventListener('submitCommentClicked', userAttemptedAction);
+		document.addEventListener('userUpdated', updateUser);
+		window.addEventListener('popstate', closeMenu);
 
 		return () => {
 			document.removeEventListener('user-logged-in', userLoggedIn);
@@ -71,12 +81,20 @@ function TopBar() {
 			document.removeEventListener('click', userClickedOutside, clickedOpts);
 			document.removeEventListener('uploadClicked', userAttemptedAction);
 			document.removeEventListener('submitCommentClicked', userAttemptedAction);
+			document.removeEventListener('userUpdated', updateUser);
+			window.removeEventListener('popstate', closeMenu);
 		}
 
 	}, [boxRef]);
 
+	const location = useLocation();
+		useEffect(() => {
+			setMenu(menuOpen = false);
+	}, [location]);
+
 	const toggleMenu = () => {
 		menuOpen = !menuOpen;
+		closeDrawers();
 		setMenu(menuOpen);
 	};
 
@@ -85,7 +103,7 @@ function TopBar() {
 
 			<div className = "bar">
 				<div className = "logo">
-					<Link to='/'>
+					<Link to='/videos'>
 						<span className = "logo-glyph"></span>
 						<span className = "logo-text">VidFeed</span>
 					</Link>
@@ -93,10 +111,16 @@ function TopBar() {
 				<div className = "spacer"></div>
 				<div className = "links">
 					{ user
-							? <span onClick = {openMenu}>
-									<span className='icon user-icon'></span>
+							? <Link to = "/me" className = "user-name subtle">
 									{ user.name }
-								</span>
+									&nbsp;
+									<span className='user-avatar-slot'>
+										{user.pic
+											? <img src = { user.pic } />
+											: ''
+										}
+									</span>
+								</Link>
 							: <span>
 									<a onClick = {openLogin}>Log in</a>
 									<a className='cta' onClick = {openSignup}>Sign up</a>
@@ -110,15 +134,26 @@ function TopBar() {
 				</div>
 			</div>
 
-			<div className = "drawer login"><Login /></div>
-			<div className = "drawer register"><Register /></div>
+			<div className = "drawer login">
+				<Login />
+			</div>
 
-			<div className = "drawer menu">
+			<div className = "drawer register">
+				<Register />
+			</div>
+
+			<div className = "flyin-menu menu">
 				<ul>
-					<li onClick = { logout } >Logout</li>
 					<li><Link to='/'>Home</Link></li>
-					<li><Link to='/me'>My Profile</Link></li>
-					<li><Link to='/edit-profile'>Edit Profile</Link></li>
+					<li><Link to='/videos'>Videos</Link></li>
+					{user
+						? <span>
+								<li><Link to='/me'>My Profile</Link></li>
+								<li><Link to='/edit-profile'>Edit Profile</Link></li>
+								<li><a onClick = { logout } >Logout</a></li>
+							</span>
+						: ''
+					}
 				</ul>
 			</div>
 		</header>

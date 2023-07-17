@@ -15,10 +15,13 @@ import reportWebVitals from './reportWebVitals';
 
 import BottomBar from './components/bottombar';
 import TopBar from './components/topbar';
+import Snacks from './components/snacks';
 
 import Home from './components/home';
+import VideoPage from './components/video-page';
 import Feed from './components/feed';
 import Profile from './components/profile';
+import Me from './components/me';
 import EditProfile from './components/edit-profile';
 
 import userService from './service/user';
@@ -34,13 +37,14 @@ root.render(
 				<Routes>
 					<Route path = "/" element = { <Home /> } />
 					<Route path = "/videos" element = { <Feed /> } />
-					<Route path = "/me" element = { <Profile /> } />
+					<Route path = "/me" element = { <Me /> } />
 					<Route path = "/edit-profile" element = { <EditProfile /> } />
+					<Route path = "/video/:videoId" element = { <VideoPage /> } />
+					<Route path = "/user/:userId" element = { <Profile /> } />
 				</Routes>
 			</div>
 			<BottomBar />
 		</BrowserRouter>
-    {/* <App /> */}
   </React.StrictMode>
 );
 

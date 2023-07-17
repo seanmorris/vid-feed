@@ -25,7 +25,6 @@ export default function Quips({video}) {
 			if (event.detail.video !== video) {
 				return;
 			}
-			console.log(event.detail);
 
 			loadList().then(() => {
 				if (listRef.current) {

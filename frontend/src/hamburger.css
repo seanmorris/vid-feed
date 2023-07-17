@@ -7,6 +7,7 @@
 	display: inline-block;
 
 	transform: scaleX(-1);
+	cursor: pointer;
 }
 
 .hamburger-button .burger-bar {

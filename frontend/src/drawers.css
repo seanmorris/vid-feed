@@ -4,6 +4,10 @@ header.top-bar .drawer {
 	bottom:   0;
 	z-index:  0;
 
+	width: 320px;
+
+	font-size: 0.9rem;
+
 	background-color: white;
 	padding: 1rem;
 	border: 1px solid #999;
@@ -13,9 +17,8 @@ header.top-bar .drawer {
 }
 
 .top-bar .drawer h2 {
-	margin: 0 0.5rem;
+	margin: 0.5rem 0.5rem;
 }
-
 
 .bottom-bar .drawer h2 {
 	margin: 0.5rem 0;
@@ -35,7 +38,8 @@ header.top-bar[data-drawer="sign-up"] .drawer.register {
 	left: 50%;
 	transform: translate(-50%, 100%);
 	transition: transform 0.25s ease-out;
-	max-width: 500px;
+	max-width: 418px;
+	box-sizing: border-box;
 	width: 100%;
 	min-height: 400px;
 

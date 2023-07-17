@@ -4,8 +4,12 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.order(id: :desc).page params[:page]
+    @videos = Video.order(created_at: :desc).page params[:page]
   end
+
+	def byUser
+		@videos = Video.where(:user_id => params[:user_id]).page params[:page]
+	end
 
   # GET /videos/1
   # GET /videos/1.json
@@ -33,6 +37,11 @@ class VideosController < ApplicationController
   # PATCH/PUT /videos/1
   # PATCH/PUT /videos/1.json
   def update
+		if ! can? :update, @video
+			render json: { status: :unprocessable_entity }
+      return
+    end
+
     if @video.update(video_params)
       render :show, status: :ok, location: @video
     else

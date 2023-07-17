@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # end
 
   get "/users/current", to: "users#current"
+	get "/videos/by-user", to: "videos#byUser"
 	get "/quips/by-video", to: "quips#byVideo"
 
 	resources :quips

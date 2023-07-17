@@ -5,15 +5,15 @@ const API_HOST = '//localhost:3000'
 const getCsrf = () => {
   const API_PATH  = '/csrf';
   return axios.get(API_HOST + API_PATH, {withCredentials: true})
-  .then(response => response.data.token)
+  .then(response => response && response.data && response.data.token)
   .catch(error => { throw error.response.data })
 };
 
 const apiGet = path => query => {
 	const params = String(new URLSearchParams(query));
 	return axios.get(API_HOST + path + '?' + params, {withCredentials: true})
-  .then(response => response.data)
-  .catch(error => { throw error.response.data })
+  .then(response => response && response.data)
+  .catch(error => { console.error(error); throw error.response.data })
 };
 
 const apiPost = path => packet => {

@@ -42,11 +42,11 @@ function Register() {
 		</label>
 		<label>
 			<span>Password</span>
-			<input type = "text" name = "user[password]" />
+			<input type = "password" name = "user[password]" />
 		</label>
 		<label>
 			<span>Confirm Password</span>
-			<input type = "text" name = "user[password_confirmation]" />
+			<input type = "password" name = "user[password_confirmation]" />
 		</label>
 		<label>
 			<input type = "submit" />

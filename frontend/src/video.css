@@ -12,7 +12,7 @@
 	scroll-snap-type: y mandatory;
 }
 
-.frame .videos .video {
+.frame .video {
 	position: relative;
 	overflow: hidden;
 	text-align: center;
@@ -42,45 +42,48 @@
 	scroll-snap-align: start;
 }
 
-.frame .videos .video video {
+.frame .video video {
 	object-fit: cover;
 	background: black;
 	/* height: 100%; */
 	flex: 1;
 	max-width: 100%;
+	min-width: 418px;
+	overflow: hidden;
 	margin: auto;
 	box-sizing: border-box;
 	border-radius: 9px;
 }
 
-.frame .videos .video .sub-video {
+.frame .video .sub-video {
 	display: flex;
 	flex-direction: column;
 	min-height: 5rem;
 }
 
-.frame .videos .video .caption {
+.frame .video .caption {
 	word-break: break-word;
 	display: flex;
+	flex-direction: column;
 	flex: 1;
 	justify-content: center;
 	align-items: center;
 	font-size: 1.25rem;
-	border-top: 1px solid #999;
 	min-height: 2rem;
-	margin-top: 2rem;
+	margin-top: 0.5rem;
 	padding: 1rem 0;
 }
 
-.frame .videos .video .attribution {
+.frame .video .attribution a {
 	margin: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	font-style: italic;
 	font-size: 1.1rem;
 	margin-bottom: 1rem;
+	text-decoration: none;
+	color: inherit;
 }
 
 .user-avatar-slot {
@@ -112,4 +115,41 @@
 
 .video .end-brow {
 	text-align: right;
+}
+
+.video-list {
+	display: flex;
+	flex-wrap: wrap;
+	width: 450px;
+}
+
+.video-list-item {
+	width: 33%;
+	padding: 0.25rem;
+	height: 8rem;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.video-list-item video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.video form {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.video [data-editing="false"] .caption-edit {
+	display: none;
+}
+
+.video [data-editing="true"] .caption-view {
+	display: none;
+}
+
+.video form .row > * {
+	margin-left: 1rem;
 }

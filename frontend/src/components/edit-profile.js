@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import userService from '../service/user';
 import userApi from '../api/user';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
 
 	const [errors, setErrors] = useState([]);
 	const [user, setUser]     = useState();
+	const navigate            = useNavigate();
 
 	const handleError = response => {
 		const errors = [];
@@ -25,7 +27,13 @@ function EditProfile() {
 
 		const formData = new FormData(event.target);
 
-		userApi.update(formData).catch(handleError);
+		userApi.update(formData)
+		.then(() => userService.current())
+		.then(detail => {
+			document.dispatchEvent(new CustomEvent('userUpdated', {detail}));
+			navigate('/me');
+		})
+		.catch(handleError);
 	}
 
 	return (<div className = "edit-profile">

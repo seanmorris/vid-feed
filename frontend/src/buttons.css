@@ -2,19 +2,32 @@ button:not(.close):not(.bubble),
 input[type="submit"],
 input[type="button"],
 a.button,
-header.top-bar .links a {
+header.top-bar .links a:not(.subtle) {
 	padding: 0.5rem;
 	font-weight: bold;
 	color: white;
-	background-color: rgba(0,0,0,0.5);
 	background-color: rgba(0,160,192,1);
 	border-radius: 5px;
 	border: none;
 	font-size: 1rem;
+	font-size: 0.8rem;
 	box-shadow: 2px 4px 2px rgba(0,0,0,0.25);
 	cursor: pointer;
 	user-select: none;
 	text-decoration: none;
+}
+
+button:not(.close):not(.bubble).uncta,
+input[type="submit"].uncta,
+input[type="button"].uncta,
+a.button.uncta,
+header.top-bar .links a:not(.subtle).uncta,
+button:not(.close):not(.bubble)[disabled],
+input[type="submit"][disabled],
+input[type="button"][disabled],
+a.button[disabled],
+header.top-bar .links a:not(.subtle)[disabled] {
+	background-color: rgba(0,0,0,0.5);
 }
 
 button.button-padded,
@@ -34,11 +47,11 @@ header.top-bar .links a.cta {
 	background-color: rgba(212,64,32,1);
 }
 
-button:active:not(.close):(.subtle),
-input[type="submit"]:active,
-input[type="button"]:active,
-a.button:active,
-header.top-bar .links a:active {
+button:active:not(.close):not(.subtle):not([disabled]),
+input[type="submit"]:active:not([disabled]),
+input[type="button"]:active:not([disabled]),
+a.button:active:not([disabled]),
+header.top-bar .links a:active:not([disabled]) {
 	position: relative;
 	top: 1px;
 	left: 1px;
@@ -55,4 +68,11 @@ button.subtle:not(.close):not(.bubble) {
 	font-weight: normal;
 	text-decoration: underline;
 	color: rgba(0,160,192,1);
+}
+
+button.upload {
+	background-image: url("plus.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30%;
 }

@@ -1,3 +1,7 @@
-import { apiGen } from './base';
+import { apiGen, apiGet } from './base';
 
-export default apiGen('/videos');
+const videoApi =  apiGen('/videos');
+
+videoApi.byUser = apiGet('/videos/by-user.json');
+
+export default videoApi;
