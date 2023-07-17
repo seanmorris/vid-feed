@@ -18,8 +18,8 @@ Just checkout the project, switch to the new directory and start the cluster. Ra
 
 ```bash
 $ git clone git@github.com:seanmorris/vid-feed.git
-$ ./npm-install
 $ cd vid-feed
+$ ./npm-install
 $ docker login
 $ docker-compose up -d
 $ ./rails-local db:migrate
