@@ -12,8 +12,18 @@ class User < ApplicationRecord
 
 	has_one_attached :avatar
 
+  validate :correct_avatar_mime_type
+
   def assign_role
     self.role = Role.find_by name: 'Regular' if role.nil?
+  end
+
+  private
+
+  def correct_avatar_mime_type
+    if avatar.attached? && !avatar.content_type.in?(%w(image/png image/gif image/jpg image/jpeg image/webp))
+      errors.add(:avatar, 'Must be an image file')
+    end
   end
 
 end

@@ -1,57 +1,57 @@
 .quip-drawer {
-	text-align: left;
-	position: absolute;
-	bottom: 0;
-	width: 418px;
-	background-color: white;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	transition: transform 0.25s ease-out;
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  width: 418px;
+  background-color: white;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  transition: transform 0.25s ease-out;
 
-	max-height: 75%;
-	display: flex;
-	flex-direction: column;
+  max-height: 75%;
+  display: flex;
+  flex-direction: column;
 }
 
 .quip-drawer .quip-list {
-	overflow: auto;
+  overflow: auto;
 }
 
 .video:not([data-show-quips="true"]) .quip-drawer {
-	transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 .quip-drawer .quip {
-	padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .quip .user-avatar-slot {
-	width: 1.75rem;
-	height: 1.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .quip .quip-body {
-	margin: 0;
-	margin-left: 2.5rem;
-	padding-bottom: 1rem;
+  margin: 0;
+  margin-left: 2.5rem;
+  padding-bottom: 1rem;
 }
 
 .quip:not(:last-child) .quip-body {
-	border-bottom: 1px #999 solid;
+  border-bottom: 1px #999 solid;
 }
 
 .quip-attribution {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .quip-drawer .video-caption {
-	display: flex;
-	flex-direction: column;
-	margin: 1rem;
-	font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  font-size: 1.25rem;
 }
 
 .quip-drawer form {
-	margin: 0.5rem;
+  margin: 0.5rem;
 }

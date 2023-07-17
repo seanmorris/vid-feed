@@ -31,20 +31,20 @@ userService.current();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-		<BrowserRouter>
-			<TopBar />
-			<div className = "frame">
-				<Routes>
-					<Route path = "/" element = { <Home /> } />
-					<Route path = "/videos" element = { <Feed /> } />
-					<Route path = "/me" element = { <Me /> } />
-					<Route path = "/edit-profile" element = { <EditProfile /> } />
-					<Route path = "/video/:videoId" element = { <VideoPage /> } />
-					<Route path = "/user/:userId" element = { <Profile /> } />
-				</Routes>
-			</div>
-			<BottomBar />
-		</BrowserRouter>
+    <BrowserRouter>
+      <TopBar />
+      <div className = "frame">
+        <Routes>
+          <Route path = "/" element = { <Home /> } />
+          <Route path = "/videos" element = { <Feed /> } />
+          <Route path = "/me" element = { <Me /> } />
+          <Route path = "/edit-profile" element = { <EditProfile /> } />
+          <Route path = "/video/:videoId" element = { <VideoPage /> } />
+          <Route path = "/user/:userId" element = { <Profile /> } />
+        </Routes>
+      </div>
+      <BottomBar />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

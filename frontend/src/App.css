@@ -1,5 +1,5 @@
 * {
-	--lightShade: #000;
+  --lightShade: #000;
 }
 
 *::-webkit-scrollbar {
@@ -7,231 +7,231 @@
 }
 
 html, body, body > #root, .App, .frame {
-	height: 100%;
+  height: 100%;
 }
 
 #root {
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 header.top-bar {
   position: sticky;
-	top: 0;
-	min-height: 4rem;
-	z-index: 1;
-	/* box-shadow: 0 1rem 1rem rgba(0,0,0,0.125); */
+  top: 0;
+  min-height: 4rem;
+  z-index: 1;
+  /* box-shadow: 0 1rem 1rem rgba(0,0,0,0.125); */
 }
 
 header.top-bar .logo {
-	padding: 1rem;
-	filter: invert(1);
+  padding: 1rem;
+  filter: invert(1);
 }
 
 header.top-bar .bar .spacer {
-	flex: 1;
+  flex: 1;
 }
 
 span.icon {
-	display: inline-block;
-	background-image: url('user.svg');
-	background-size: contain;
-	width: 1rem;
-	height: 1rem;
+  display: inline-block;
+  background-image: url('user.svg');
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
 }
 
 .frame {
-	position: relative;
-	flex: 1;
+  position: relative;
+  flex: 1;
 
-	background: repeating-linear-gradient(
-		45deg,
-		rgba(255,255,255,0.95),
-		rgba(255,255,255,0.25) 10%,
-		rgba(255,255,255,0.95) 20%
-	);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.25) 10%,
+    rgba(255,255,255,0.95) 20%
+  );
 
-	background-size: 100% 5000px;
+  background-size: 100% 5000px;
 
-	background-attachment: local;
+  background-attachment: local;
 }
 
 .top-loader + .bottom-loader {
-	display: none;
+  display: none;
 }
 
 .bottom-bar {
-	position: relative;
-	min-height: 4rem;
-	flex-direction: row;
+  position: relative;
+  min-height: 4rem;
+  flex-direction: row;
 }
 
 header.top-bar .bar,
 .bottom-bar .bar {
-	position: absolute;
-	bottom:   0;
-	top:      0;
-	left:     0;
-	right:    0;
-	z-index: 1;
+  position: absolute;
+  bottom:   0;
+  top:      0;
+  left:     0;
+  right:    0;
+  z-index: 1;
 
-	display:         flex;
-	align-items:     center;
-	justify-content: center;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
 
-	background-color: var(--lightShade);
-	background-image: url("grid-glass.png");
+  background-color: var(--lightShade);
+  background-image: url("grid-glass.png");
 }
 
 .bottom-bar button {
-	background-color: #333;
-	border: none;
-	border-radius: 50%;
-	font-size: 2rem;
-	width: 1.65em;
-	height: 1.65em;
-	color:white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  background-color: #333;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  width: 1.65em;
+  height: 1.65em;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.close {
-	width: 1.5rem;
-	height: 1.5rem;
-	background-color: transparent;
-	border: none;
-	background-image: url("x.svg");
-	background-size: contain;
-	position: absolute;
-	top:   1.25rem;
-	right: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: transparent;
+  border: none;
+  background-image: url("x.svg");
+  background-size: contain;
+  position: absolute;
+  top:   1.25rem;
+  right: 1.25rem;
 }
 
 .fill {
-	position: relative;
-	flex: 1;
+  position: relative;
+  flex: 1;
 }
 
 .edit-profile,
 .profile {
-	margin: auto;
-	width: 450px;
+  margin: auto;
+  width: 450px;
 }
 
 .profile h1 {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .avatar {
-	width: 2em;
-	height:2em;
-	object-fit: cover;
-	border-radius: 50%;
+  width: 2em;
+  height:2em;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile h1 .avatar {
-	margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 header .logo a {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
 }
 
 header .logo-glyph {
-	width: 3rem;
-	height: 3rem;
-	background-image: url("arrows.svg");
-	background-size: contain;
-	display: inline-block;
-	margin-right: 0.25rem;
+  width: 3rem;
+  height: 3rem;
+  background-image: url("arrows.svg");
+  background-size: contain;
+  display: inline-block;
+  margin-right: 0.25rem;
 }
 
 header .logo-text {
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
 }
 
 ul:empty {
-	display: none;
+  display: none;
 }
 
 .flyin-menu {
-	background-image: url("grid-glass.png");
-	background-attachment: fixed;
-	/* transform: translateX(100%); */
-	transition: transform 0.25s ease-in-out;
-	/* box-shadow: 0rem 0.75rem 0.75rem rgba(0,0,0,0.25); */
-	background-color: #DDD;
-	position: absolute;
-	height: calc(100vh - 8rem);
-	right: 0;
-	top: 4rem;
-	min-width: 320px;
-	max-width: 100%;
-	box-shadow: -0.5rem 0rem 1rem rgba(0,0,0,0.35);
-	font-weight: 300;
-	padding-top: 2rem;
+  background-image: url("grid-glass.png");
+  background-attachment: fixed;
+  /* transform: translateX(100%); */
+  transition: transform 0.25s ease-in-out;
+  /* box-shadow: 0rem 0.75rem 0.75rem rgba(0,0,0,0.25); */
+  background-color: #DDD;
+  position: absolute;
+  height: calc(100vh - 8rem);
+  right: 0;
+  top: 4rem;
+  min-width: 320px;
+  max-width: 100%;
+  box-shadow: -0.5rem 0rem 1rem rgba(0,0,0,0.35);
+  font-weight: 300;
+  padding-top: 2rem;
 }
 
 header:has(.hamburger-button[data-open="false"]) .flyin-menu {
-	transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .flyin-menu ul li {
-	list-style: none;
-	font-size: 1.1rem;
-	margin-bottom: 1rem;
-	cursor: pointer;
+  list-style: none;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .flyin-menu ul a {
-	text-decoration: none;
-	color: inherit
+  text-decoration: none;
+  color: inherit
 }
 
 .top-bar .user-name {
-	color:white;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	font-size: 1.1rem;
+  color:white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
 }
 
 .top-bar .user-name .user-avatar-slot {
-	width: 1.75rem;
-	height: 1.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .videos[data-done="true"] .bottom-loader {
-	display: none;
+  display: none;
 }
 
 .page-buttons {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .page-buttons > button {
-	margin: 1rem;
+  margin: 1rem;
 }
 
 .top-bar .subtle {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .row {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .end {
-	justify-content: flex-end;
+  justify-content: flex-end;
 }

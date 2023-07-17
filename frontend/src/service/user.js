@@ -3,64 +3,64 @@ import userApi from '../api/user';
 let currentUser = null;
 
 const handleCurrent = result => {
-	if (!currentUser && result && result.id) {
-		handleLogin(result);
-		currentUser = result;
-		userService.signedIn = currentUser;
-	}
+  if (!currentUser && result && result.id) {
+    handleLogin(result);
+    currentUser = result;
+    userService.signedIn = currentUser;
+  }
 };
 
 const handleCurrentError = error => {
-	console.warn(error);
+  console.warn(error);
 };
 
 const handleLogin = result => {
-	userService.signedIn = true;
-	document.dispatchEvent(new CustomEvent('user-logged-in', {detail: result}));
+  userService.signedIn = true;
+  document.dispatchEvent(new CustomEvent('user-logged-in', {detail: result}));
 };
 
 const handleLoginError = error => {
-	document.dispatchEvent(new CustomEvent('user-logged-in-failed', {detail: error}));
+  document.dispatchEvent(new CustomEvent('user-logged-in-failed', {detail: error}));
 };
 
 const handleLogout = result => {
-	userService.signedIn = false;
-	document.dispatchEvent(new CustomEvent('user-logged-out', {detail: result}))
+  userService.signedIn = false;
+  document.dispatchEvent(new CustomEvent('user-logged-out', {detail: result}))
 };
 
 const handleLogoutError = error => {
-	document.dispatchEvent(new CustomEvent('user-logged-out-failed', {detail: error}))
+  document.dispatchEvent(new CustomEvent('user-logged-out-failed', {detail: error}))
 };
 
 const handleRegistered = result => {
-	document.dispatchEvent(new CustomEvent('user-registered', {detail: result}))
-	handleLogin(result);
+  document.dispatchEvent(new CustomEvent('user-registered', {detail: result}))
+  handleLogin(result);
 };
 
 const handleRegisterError = error => {
-	document.dispatchEvent(new CustomEvent('user-register-failed', {detail: error}));
+  document.dispatchEvent(new CustomEvent('user-register-failed', {detail: error}));
 }
 
 const userService = {
 
-	signedIn: false,
+  signedIn: false,
 
-	current: function() {
+  current: function() {
     const current = userApi.current()
-		.catch(handleCurrentError);
+    .catch(handleCurrentError);
 
-		current.then(handleCurrent)
+    current.then(handleCurrent)
 
-		return current;
+    return current;
   },
 
-	signIn: function(email, password) {
+  signIn: function(email, password) {
 
     const signIn = userApi.signIn({user: {email, password}});
 
-		signIn
-		.then(handleLogin)
-		.catch(handleLoginError);
+    signIn
+    .then(handleLogin)
+    .catch(handleLoginError);
 
     return signIn;
   },
@@ -68,7 +68,7 @@ const userService = {
 
   signOut: function() {
     const signOut = userApi.signOut()
-		.catch(handleLogoutError);
+    .catch(handleLogoutError);
 
     signOut.then(handleLogout);
 
@@ -77,14 +77,14 @@ const userService = {
 
   register: function(formData) {
 
-		const register = userApi.signUp(formData)
+    const register = userApi.signUp(formData)
 
-		register
-		.then(handleRegistered)
-		.catch(handleRegisterError);
+    register
+    .then(handleRegistered)
+    .catch(handleRegisterError);
 
-		return register;
-	},
+    return register;
+  },
 };
 
 export default userService;

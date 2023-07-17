@@ -1,55 +1,55 @@
 header.top-bar .drawer {
-	position: absolute;
-	right:    3rem;
-	bottom:   0;
-	z-index:  0;
+  position: absolute;
+  right:    3rem;
+  bottom:   0;
+  z-index:  0;
 
-	width: 320px;
+  width: 320px;
 
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 
-	background-color: white;
-	padding: 1rem;
-	border: 1px solid #999;
-	border-top: none;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #999;
+  border-top: none;
 
-	transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 .top-bar .drawer h2 {
-	margin: 0.5rem 0.5rem;
+  margin: 0.5rem 0.5rem;
 }
 
 .bottom-bar .drawer h2 {
-	margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 header.top-bar[data-drawer="menu"] .drawer.menu,
 header.top-bar[data-drawer="log-in"] .drawer.login,
 header.top-bar[data-drawer="sign-up"] .drawer.register {
-	transform: translateY(100%);
-	box-shadow: 0rem 0.75rem 0.75rem rgba(0,0,0,0.25);
+  transform: translateY(100%);
+  box-shadow: 0rem 0.75rem 0.75rem rgba(0,0,0,0.25);
 }
 
 .bottom-bar .drawer {
-	position: absolute;
-	bottom: 0%;
-	z-index: 2;
-	left: 50%;
-	transform: translate(-50%, 100%);
-	transition: transform 0.25s ease-out;
-	max-width: 418px;
-	box-sizing: border-box;
-	width: 100%;
-	min-height: 400px;
+  position: absolute;
+  bottom: 0%;
+  z-index: 2;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  transition: transform 0.25s ease-out;
+  max-width: 418px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 400px;
 
-	background-color: white;
-	padding: 1rem;
-	border: 1px solid #999;
-	border-bottom: none;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #999;
+  border-bottom: none;
 }
 
 .bottom-bar[data-drawer="upload"] .drawer.upload-drawer {
-	transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
 }
 

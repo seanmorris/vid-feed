@@ -18,6 +18,18 @@ services:
     environment:
       POSTGRES_URL: postgres://vidfeed_user@postgres/vidfeed_database
 
+  react:
+    restart: always
+    command: npm run start
+    image: node:18-bookworm-slim
+    working_dir: /app/frontend
+    volumes:
+      - ./:/app
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+
   postgres:
     image: postgres:9.6.2-alpine
     environment:
