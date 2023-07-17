@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get "/csrf", to: "csrf#token"
   post "/csrf/time", to: "csrf#time"
+
   get '*unmatched_route', to: static("index.html"), :constraints => lambda { |request| request.headers['accept'].include?('text/html') }
 
 end
