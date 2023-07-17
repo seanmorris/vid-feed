@@ -164,3 +164,7 @@
 .sub-video[data-editing="false"] .caption:has( .caption-view:empty ) {
   display: none;
 }
+
+.caption-edit {
+  width: 100%;
+}
