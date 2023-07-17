@@ -23,7 +23,9 @@ $ docker-compose up
 
 By default, the development instance will serve the backend over **port 3000** and the frontend over **port 3001**.
 
-This is important during development, since the **latest production build** will be served over port 3000. Only upon manually rebuilding the UI with `./build-ui`, or alternatively creating a git commit will cause this to refresh. This is acheived by inspecting the `accept` header of the HTTP request during Rails' routing phase.
+This is important during development, since the **latest production build** will be served over port 3000. Only upon manually rebuilding the UI with `./build-ui`, or alternatively creating a git commit will cause this to refresh.
+
+Serving the frontend through the backend is acheived by inspecting the `accept` header of the HTTP request during Rails' routing phase.
 
 The cause of this is that the `public/` directory within the `frontend/` folder is actually *symlinked* back up to `/public` in the root of the project. This allows Rails to serve the pre-built react application. However, this version of the application does not include the hot-reloading behavior found in development.
 
