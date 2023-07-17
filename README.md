@@ -14,7 +14,7 @@ https://vidfeed.seanmorr.is/
 
 You only need Docker & Docker Compose installed to get started developing VidFeed. All the infrastructure is containerized.
 
-Just checkout the project, switch to the new directory and start the cluster:
+Just checkout the project, switch to the new directory and start the cluster. Rails takes up the root of the project, and the React frontend can be found in the `frontend/` directory.
 
 ```bash
 $ git clone ...
