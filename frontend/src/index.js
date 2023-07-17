@@ -23,6 +23,7 @@ import Feed from './components/feed';
 import Profile from './components/profile';
 import Me from './components/me';
 import EditProfile from './components/edit-profile';
+import NotFound from './components/not-found';
 
 import userService from './service/user';
 
@@ -41,6 +42,7 @@ root.render(
           <Route path = "/edit-profile" element = { <EditProfile /> } />
           <Route path = "/video/:videoId" element = { <VideoPage /> } />
           <Route path = "/user/:userId" element = { <Profile /> } />
+          <Route path = "*" element={ <NotFound /> } />
         </Routes>
       </div>
       <BottomBar />

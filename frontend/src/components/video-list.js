@@ -23,6 +23,7 @@ export default function VideoList({userId}) {
       });
     }
   });
+
   return (<div>
     <div className='video-list'>
     {videos

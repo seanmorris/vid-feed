@@ -46,10 +46,12 @@ export default function Quips({video}) {
 
   return (
     <div className = "quip-list" ref = { listRef }>
-      <div className='video-caption'>
-        <small>commenting on</small>
-        { video.description }
+      {video.description ?
+        <div className='video-caption'>
+          <small>commenting on</small>
+          <span>{ video.description }</span>
         </div>
+       : <br />}
       {quips ? quips.map(q => <Quip quip = {q} key = { q.id } ></Quip>) : ''}
     </div>
   );

@@ -26,6 +26,7 @@
   margin: auto;
 
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .frame .videos .loader {
@@ -58,7 +59,7 @@
 .frame .video .sub-video {
   display: flex;
   flex-direction: column;
-  min-height: 5rem;
+  /* min-height: 5rem; */
 }
 
 .frame .video .caption {
@@ -152,4 +153,12 @@
 
 .video form .row > * {
   margin-left: 1rem;
+}
+
+.caption-view:empty {
+  display: none;
+}
+
+.sub-video[data-editing="false"] .caption:has( .caption-view:empty ) {
+  display: none;
 }
