@@ -41,7 +41,7 @@ $ docker-compose down
 
 Both the frontend and the backend can be served through one server. This is achieved by inspecting the `accept` header of the HTTP request during Rails' routing phase.
 
-By default, the development instance will serve the backend over **port 3000** and the frontend over **port 3001**.
+By default, the *development* instance will serve the backend over **port 3000** and the frontend over **port 3001**.
 
 This is important during development, since the **latest production build** of the **frontend** will be served from the **backend** over **port 3000**. Only upon execution of the pre-commit hook, or alternatively manually rebuilding the UI with `./build-ui` will cause this to refresh.
 
