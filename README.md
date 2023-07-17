@@ -1,5 +1,7 @@
 # VidFeed
 
+https://vidfeed.seanmorr.is/
+
 * React
 * Ruby on Rails
 * Postgres
