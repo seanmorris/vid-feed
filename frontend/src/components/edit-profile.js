@@ -45,7 +45,7 @@ function EditProfile() {
       ? <form onSubmit = { handleSubmit } >
         <label>
           Display Name:
-          <input name = "user[name]" defaultValue = { user.name } autocomplete = "none" />
+          <input name = "user[name]" defaultValue = { user.name } autoComplete = "none" />
         </label>
         <label>
           Avatar:
@@ -53,7 +53,7 @@ function EditProfile() {
         </label>
         <label>
           Current Password:
-          <input name = "user[current_password]" type = "password" autocomplete = "none" />
+          <input name = "user[current_password]" type = "password" autoComplete = "none" />
         </label>
         <label>
           &nbsp;

@@ -107,6 +107,7 @@ function Video({video, parent}) {
       loop = { true }
       preload = 'metadata'
       src = { video.file || testVideo2 }
+      playsInline
     />
 
     <div className = "sub-video" data-editing = { editing }>

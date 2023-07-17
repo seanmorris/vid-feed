@@ -30,6 +30,7 @@ export default function VideoList({userId}) {
       ? videos.map(v => <div key = {v.id} className = "video-list-item">
         <Link to = { '/video/' + v.id }>
           <video
+            playsInline
             controls = { false }
             muted = { true }
             loop = { false }

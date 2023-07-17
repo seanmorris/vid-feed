@@ -50,11 +50,11 @@ function Login() {
     </ul>
     <label>
       <span>Email</span>
-      <input type = "text" name = "username" autocomplete = "username email" />
+      <input type = "text" name = "username" autoComplete = "username email" />
     </label>
     <label>
       <span>Password</span>
-      <input type = "password" name = "password" autocomplete = "current-password" />
+      <input type = "password" name = "password" autoComplete = "current-password" />
     </label>
     <label>
       <input type = "submit" />
