@@ -21,7 +21,9 @@ $ git clone git@github.com:seanmorris/vid-feed.git
 $ ./npm-install
 $ cd vid-feed
 $ docker login
-$ docker-compose up
+$ docker-compose up -d
+$ ./rails-local db:migrate
+$ ./rails-local db:seed
 ```
 
 Once its set up you can then start the project with just:
