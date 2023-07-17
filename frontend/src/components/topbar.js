@@ -71,6 +71,7 @@ function TopBar() {
 		document.addEventListener('user-logged-out', userLoggedOut);
 		document.addEventListener('click', userClickedOutside, clickedOpts);
 		document.addEventListener('uploadClicked', userAttemptedAction);
+		document.addEventListener('profileClicked', userAttemptedAction);
 		document.addEventListener('submitCommentClicked', userAttemptedAction);
 		document.addEventListener('userUpdated', updateUser);
 		window.addEventListener('popstate', closeMenu);
@@ -80,6 +81,7 @@ function TopBar() {
 			document.removeEventListener('user-logged-out', userLoggedOut);
 			document.removeEventListener('click', userClickedOutside, clickedOpts);
 			document.removeEventListener('uploadClicked', userAttemptedAction);
+			document.removeEventListener('profileClicked', userAttemptedAction);
 			document.removeEventListener('submitCommentClicked', userAttemptedAction);
 			document.removeEventListener('userUpdated', updateUser);
 			window.removeEventListener('popstate', closeMenu);

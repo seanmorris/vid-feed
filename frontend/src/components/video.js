@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import testVideo1 from '../testVideo1.mp4';
 import testVideo2 from '../testVideo2.mp4';
 
@@ -17,6 +17,7 @@ function Video({video, parent}) {
 	const [canEdit, setCanEdit]     = useState(false);
 	const [editing, setEditing]     = useState(false);
 
+  const navigate = useNavigate();
 	const videoRef = useRef(null);
 
 	useEffect(() => {
@@ -77,10 +78,18 @@ function Video({video, parent}) {
 		.catch(console.warn);
 	};
 
+  const navigateToProfile = event => {
+    event.preventDefault();
+    if (!document.dispatchEvent(new CustomEvent('profileClicked', {cancelable:true}))) {
+      return;
+    }
+    navigate(event.target.getAttribute('href'));
+  };
+
 	return (<div className='video' data-show-quips = {showQuips}>
 		<div className = "super-video">
 			<div className='attribution'>
-				<Link to = { '/user/' + video.author.id }>
+				<a onClick={ navigateToProfile } href = {'/user/' + video.author.id}>
 					<span className='user-avatar-slot'>
 						{video.avatar
 							? <img src = { video.avatar } />
@@ -88,7 +97,7 @@ function Video({video, parent}) {
 						}
 					</span>
 					{ video.author.name }
-				</Link>
+				</a>
 			</div>
 		</div>
 

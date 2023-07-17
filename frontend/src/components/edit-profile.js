@@ -49,7 +49,7 @@ function EditProfile() {
 				</label>
 				<label>
 					Avatar:
-					<input name = "user[avatar]" type = "file" />
+					<input name = "user[avatar]" type = "file" accept="image/*" />
 				</label>
 				<label>
 					Current Password:

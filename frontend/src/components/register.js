@@ -38,7 +38,7 @@ function Register() {
 		</label>
 		<label>
 			<span>Email</span>
-			<input type = "text" name = "user[email]" />
+			<input type = "text" name = "user[email]" accept="image/*" />
 		</label>
 		<label>
 			<span>Password</span>

@@ -37,7 +37,7 @@ function Upload() {
 		</ul>
 		<label>
 			<span>File</span>
-			<input type = "file" name = "video[file]" />
+			<input type = "file" name = "video[file]" accept="video/*" />
 		</label>
 		<label>
 			<span>Caption</span>
