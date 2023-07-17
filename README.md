@@ -26,7 +26,7 @@ $ ./rails-local db:migrate
 $ ./rails-local db:seed
 ```
 
-Once its set up you can then start the project with just:
+This should give you a working version of the project running locally. Later on, you can re-start the project with just:
 
 ```bash
 $ docker-compose up
