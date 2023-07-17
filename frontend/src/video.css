@@ -75,7 +75,7 @@
   padding: 1rem 0;
 }
 
-.frame .video .attribution a {
+.frame .video .attribution {
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -83,6 +83,8 @@
   align-items: center;
   font-size: 1.1rem;
   margin-bottom: 1rem;
+}
+.frame .video a.attribution {
   text-decoration: none;
   color: inherit;
 }

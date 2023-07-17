@@ -88,17 +88,15 @@ function Video({video, parent}) {
 
   return (<div className='video' data-show-quips = {showQuips}>
     <div className = "super-video">
-      <div className='attribution'>
-        <a onClick={ navigateToProfile } href = {'/user/' + video.author.id}>
-          <span className='user-avatar-slot'>
-            {video.avatar
-              ? <img src = { video.avatar } />
-              : ''
-            }
-          </span>
-          { video.author.name }
-        </a>
-      </div>
+      <a className='attribution' onClick={ navigateToProfile } href = {'/user/' + video.author.id}>
+        <span className='user-avatar-slot'>
+          {video.avatar
+            ? <img src = { video.avatar } />
+            : ''
+          }
+        </span>
+        { video.author.name }
+      </a>
     </div>
 
     <video
