@@ -87,3 +87,9 @@ Run `./build-ui` to invoke a container that will build the production version
 
 The frontend never needs to be built manually, since there is a git precommit hook that will run and invoke the command before every commit.
 
+To set this hook up locally just run:
+
+```bash
+$ git config --local core.hooksPath .githooks/
+```
+
