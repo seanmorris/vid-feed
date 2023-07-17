@@ -4,15 +4,15 @@ services:
 
   web:
     restart: always
-    command: bundle exec rails s -b 0.0.0.0    
-    image: seanmorris/vid-feed-web    
+    command: bundle exec rails s -b 0.0.0.0
+    image: seanmorris/vid-feed-web
     build:
-      dockerfile: ../infra/web.dockerfile
-      context: backend/    
+      dockerfile: ./infra/web.dockerfile
+      context: ./
     volumes:
-      - ./backend:/app    
+      - ./:/app
     ports:
-      - "3000:3000"    
+      - "3000:3000"
     depends_on:
       - postgres
     environment:
