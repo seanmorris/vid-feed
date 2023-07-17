@@ -74,6 +74,7 @@ end
 gem 'rails-static-router'
 gem "devise", "~> 4.9"
 gem 'rack-cors'
+gem 'aws-sdk-s3'
 gem 'kaminari'
 gem "image_processing", ">= 1.2"
 gem 'cancancan'
