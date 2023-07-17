@@ -12,7 +12,7 @@ function BottomBar() {
 		const event = new CustomEvent('uploadClicked', {cancelable:true})
 
 		if (document.dispatchEvent(event)) {
-			setDrawer('upload', 1);
+			setDrawer('upload');
 		}
 	};
 
@@ -20,10 +20,16 @@ function BottomBar() {
 		closeUpload();
 	};
 
+  const videoUploaded = () => {
+    setDrawer(false);
+  };
+
 	useEffect(() => {
 		document.addEventListener('user-logged-out', userLoggedOut);
+		document.addEventListener('videoUploaded', videoUploaded);
 		return () => {
-			document.removeEventListener('user-logged-out', userLoggedOut);
+      document.removeEventListener('user-logged-out', userLoggedOut);
+      document.removeEventListener('videoUploaded', videoUploaded);
 		};
 	});
 

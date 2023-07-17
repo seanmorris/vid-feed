@@ -24,6 +24,7 @@ function Upload() {
 
 		videoApi.create(formData)
 		.then(video => {
+      document.dispatchEvent(new CustomEvent('videoUploaded'));
 			event.target.reset()
 			navigate('/video/' + video.id);
 		})
