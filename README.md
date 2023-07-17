@@ -25,7 +25,7 @@ By default, the development instance will serve the backend over **port 3000** a
 
 This is important during development, since the **latest production build** of the **frontend** will be served from the **backend** over port 3000. Only upon manually rebuilding the UI with `./build-ui`, or alternatively creating a git commit will cause this to refresh.
 
-The cause of this is that the `public/` directory within the `frontend/` folder is actually *symlinked* back up to `/public` in the root of the project. This allows Rails to serve the pre-built react application like it woudl any other set of static assets. However, this version of the application does not include the hot-reloading behavior found in development.
+The cause of this is that the `public/` directory within the `frontend/` folder is actually *symlinked* back up to `/public` in the root of the project. This allows Rails to serve the pre-built react application like it would any other set of static assets. However, this version of the application does not include the hot-reloading behavior found in development.
 
 The *development* instance of the same application will be served on **port 3001**. This version will have all the development bells and whistles like hot module reloading. Appropriate CORS headers will be served from Rails in development to account for this.
 
