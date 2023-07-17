@@ -19,6 +19,7 @@ $ git clone ...
 $ cd vid-feed
 $ docker-compose up
 ```
+### Important information regarding ports 3000 & 3001:
 
 By default, the development instance will serve the backend over **port 3000** and the frontend over **port 3001**.
 
