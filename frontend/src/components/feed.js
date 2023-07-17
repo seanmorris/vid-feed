@@ -134,7 +134,7 @@ function Feed() {
         if (tops.length ) {
           const top = tops[0];
           console.log(top)
-          scrollBox.scrollTo({top, behavior: 'smooth'})
+          scrollBox.scrollTo({top, behavior: 'instant'})
         }
 
         delay(500).then(() => {
